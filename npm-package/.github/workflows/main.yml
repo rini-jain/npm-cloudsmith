@@ -2,7 +2,8 @@ name: Push NPM to Cloudsmith
 
 on:
   push:
-    branches: [master]
+    branches: 
+    - main
 
 permissions:
   id-token: write
