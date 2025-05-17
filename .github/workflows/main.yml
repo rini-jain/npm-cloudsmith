@@ -1,4 +1,4 @@
-name: Push NPM to Cloudsmith
+name: Push NPM to Cloudsmiths
 
 on:
   push:
