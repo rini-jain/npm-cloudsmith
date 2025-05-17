@@ -1,0 +1,42 @@
+name: Push NPM to Cloudsmith
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: |
+          cd npm-package
+          npm install
+
+      - name: Build Package
+        run: |
+          cd npm-package
+          npm pack
+
+      - name: Install Cloudsmith CLI
+        uses: cloudsmith-io/cloudsmith-cli-action@v0.2
+        with:
+          oidc-namespace: "rini-jain-rnye"
+          oidc-service-slug: "github-actions-oidc"
+
+      - name: Push to Cloudsmith
+        run: |
+          cloudsmith push npm rini-jain-rnye/cloudsmith-gha-setup npm-package/*.tgz --republish
