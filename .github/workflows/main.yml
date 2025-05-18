@@ -41,4 +41,4 @@ jobs:
 
       - name: Push to Cloudsmith
         run: |
-          cloudsmith push npm rini-jain-rnye/repos-1 npm-package/*.tgz --republish
+          cloudsmith push npm rini-jain-rnye/repos-2 npm-package/*.tgz --republish
