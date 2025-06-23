@@ -35,5 +35,5 @@ jobs:
         env:
           CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
         run: |
-          cloudsmith push npm rini-jain-rnye/repo-1 npm-package/*.tgz --api-key $CLOUDSMITH_API_KEY --republish
+          cloudsmith push npm rini-jain-rnye/api_repo npm-package/*.tgz --api-key $CLOUDSMITH_API_KEY --republish
 
